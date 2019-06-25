@@ -1,17 +1,9 @@
-const db = require('../db')
+const Product = require('../models/product.model')
 
-module.exports.index = (req, res) => {
-  let page = parseInt(req.query.page) || 1 // n
-  let perPage = 8 // x
-
-  let start = (page - 1) * perPage
-  let end = page * perPage
-
-  let drop = (page - 1) * perPage
-
+module.exports.index = async (req, res) => {
+  let products = await Product.find()
   res.render('products/index', {
-    //products: db.get('products').value().slice(start, end)
-    products: db.get('products').drop(drop).take(perPage).value()
+    products: products
   })
 }
 

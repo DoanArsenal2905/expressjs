@@ -1,10 +1,11 @@
-const db = require('../db')
+const User = require('../models/user.model')
 const shortid = require('shortid')
 
 // view users page
-module.exports.index = (req, res) => {
+module.exports.index = async (req, res) => {
+    let users = await User.find()
     res.render('users/index', {
-        users: db.get('users').value()
+        users: users
     })
 }
 
@@ -25,16 +26,16 @@ module.exports.create = (req, res) => {
 } 
 module.exports.postCreate = (req, res) => {
     req.body.id = shortid.generate()
-    console.log(res.locals)
+    req.body.avatar = req.file.path.split('\\').slice(1).join('/')
+
     db.get('users').push(req.body).write()
     res.redirect('/users')
 }
 
-// view users page
-module.exports.get = (req, res) => {
-    let id = req.params.id
-    let user = db.get('users').find({ id: id }).value()
+// view users info
+module.exports.get = async (req, res) => {
+    let users = await User.find()
     res.render('users/view', {
-        user: user
+      users: users
     })
 }

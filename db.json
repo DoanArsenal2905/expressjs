@@ -1,6 +1,23 @@
 {
   "users": [
     {
+      "id": "1",
+      "name": "Linh",
+      "phone": "0337839999",
+      "email": "abc@gmail.com",
+      "password": "202cb962ac59075b964b07152d234b70"
+    },
+    {
+      "name": "Trang",
+      "phone": "0337839988",
+      "email": "doanquocngo@outlook.com",
+      "password": "202cb962ac59075b964b07152d234b70",
+      "id": "4FWbWSzT9",
+      "avatar": "uploads/9f250aaabf0461242032b720ac0330e0"
+    }
+  ],
+  "products": [
+    {
       "id": "58abc768-78d5-4610-82a2-f20410c5d357",
       "name": "Pineapple - Regular",
       "image": "https://loremflickr.com/320/240/dog",
